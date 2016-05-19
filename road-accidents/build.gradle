@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+ext{
+  springVersion = '4.2.6.RELEASE';
+  junitVersion = '4.12';
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories{
+  mavenLocal();
+  mavenCental();
+}
+
+dependencies{
+
+  compile "org.springframework:spring-context:${springVersion}"
+
+  testCompile "junit:junit:${junitVersion}"
+}

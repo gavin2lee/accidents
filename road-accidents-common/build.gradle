@@ -1,0 +1,23 @@
+apply plugin:'java'
+
+ext{
+
+}
+
+repositories{
+  mavenLocal();
+  mavenCentral();
+}
+
+jar{
+  baseName = 'road-accidents-common'
+  version = '1.0-SNAPSHOT'
+}
+
+tasks.withType(JavaCompile){
+  options.encoding = 'UTF-8'
+}
+
+dependencies{
+  
+}

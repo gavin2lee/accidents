@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mummy</groupId>
+  <artifactId>testwebapp</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>testwebapp Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+  <spring.version>3.2.4.RELEASE</spring.version>
+  <hibernate.version>4.2.5.Final</hibernate.version>
+  <spring-data-jpa.version>1.3.4.RELEASE</spring-data-jpa.version>
+  <slf4j.version>1.7.5</slf4j.version>
+  <struts.version>2.3.15.1</struts.version>
+  <cxf.version>2.7.7</cxf.version>
+ </properties>
+ <!-- 依赖项定义 -->
+ <dependencies>
+  <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-resources-plugin</artifactId>
+      <version>2.4.3</version>
+  </dependency>
+
+  <!-- Spring mvc @ResponseBody ajax调用出现如下错误：406 Not Acceptable -->
+  <dependency>
+   <groupId>org.codehaus.jackson</groupId>
+   <artifactId>jackson-mapper-asl</artifactId>
+   <version>1.7.1</version>
+  </dependency>
+  <dependency>
+   <groupId>junit</groupId>
+   <artifactId>junit</artifactId>
+   <version>4.11</version>
+   <scope>test</scope>
+  </dependency>
+  <dependency>
+   <groupId>org.seleniumhq.selenium</groupId>
+   <artifactId>selenium-java</artifactId>
+   <version>2.35.0</version>
+  </dependency>
+  <!-- Spring AOP begin -->
+  <dependency>
+   <groupId>org.aspectj</groupId>
+   <artifactId>aspectjrt</artifactId>
+   <version>1.7.3</version>
+  </dependency>
+  <dependency>
+   <groupId>org.aspectj</groupId>
+   <artifactId>aspectjweaver</artifactId>
+   <version>1.7.3</version>
+   <scope>runtime</scope>
+  </dependency>
+  <!-- Spring AOP end -->
+  <!-- PERSISTENCE begin -->
+  <!-- hibernate -->
+  <dependency>
+   <groupId>org.hibernate</groupId>
+   <artifactId>hibernate-entitymanager</artifactId>
+   <version>${hibernate.version}</version>
+  </dependency>
+  <!-- spring data access -->
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-tx</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework.data</groupId>
+   <artifactId>spring-data-jpa</artifactId>
+   <version>${spring-data-jpa.version}</version>
+   <exclusions>
+    <exclusion>
+     <groupId>junit</groupId>
+     <artifactId>junit-dep</artifactId>
+    </exclusion>
+    <exclusion>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-aop</artifactId>
+    </exclusion>
+    <exclusion>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-asm</artifactId>
+    </exclusion>
+   </exclusions>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-aop</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-orm</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-web</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-jdbc</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-test</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+
+  <!-- WEB begin -->
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-webmvc</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>commons-fileupload</groupId>
+   <artifactId>commons-fileupload</artifactId>
+   <version>1.3</version>
+  </dependency>
+  <dependency>
+   <groupId>commons-io</groupId>
+   <artifactId>commons-io</artifactId>
+   <version>2.2</version>
+  </dependency>
+  <!-- 日志 -->
+  <dependency>
+   <groupId>log4j</groupId>
+   <artifactId>log4j</artifactId>
+   <version>1.2.14</version>
+  </dependency>
+  <dependency>
+   <groupId>org.slf4j</groupId>
+   <artifactId>slf4j-api</artifactId>
+   <version>1.6.1</version>
+  </dependency>
+  <dependency>
+   <groupId>org.slf4j</groupId>
+   <artifactId>slf4j-jdk14</artifactId>
+   <version>1.7.5</version>
+  </dependency>
+  <dependency>
+   <groupId>javax.annotation</groupId>
+   <artifactId>javax.annotation-api</artifactId>
+   <version>1.2</version>
+   <scope>provided</scope>
+  </dependency>
+  <dependency>
+   <groupId>commons-dbcp</groupId>
+   <artifactId>commons-dbcp</artifactId>
+   <version>20030825.184428</version>
+  </dependency>
+  <dependency>
+   <groupId>commons-pool</groupId>
+   <artifactId>commons-pool</artifactId>
+   <version>20030825.183949</version>
+  </dependency>
+  <!-- 日志结束 -->
+
+  <!-- WEB end -->
+  <!-- 数据库连接 -->
+  <dependency>
+   <groupId>mysql</groupId>
+   <artifactId>mysql-connector-java</artifactId>
+   <version>5.1.22</version>
+  </dependency>
+  <dependency>
+   <groupId>commons-collections</groupId>
+   <artifactId>commons-collections</artifactId>
+   <version>20040616</version>
+  </dependency>
+  <dependency>
+   <groupId>javax.servlet</groupId>
+   <artifactId>jstl</artifactId>
+   <version>1.2</version>
+  </dependency>
+  <dependency>
+   <groupId>taglibs</groupId>
+   <artifactId>standard</artifactId>
+   <version>1.1.2</version>
+  </dependency>
+  <dependency>
+   <groupId>javax.servlet.jsp</groupId>
+   <artifactId>jsp-api</artifactId>
+   <version>2.1</version>
+   <scope>provided</scope>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.openejb</groupId>
+   <artifactId>javaee-api</artifactId>
+   <version>5.0-1</version>
+   <scope>provided</scope>
+  </dependency>
+  <!-- MSSQL 数据库连接 -->
+  <!-- <dependency> <groupId>com.microsoft.sqlserver</groupId> <artifactId>sqljdbc4</artifactId> <version>4.0</version> </dependency> -->
+  <!-- ORACLE 数据库连接 -->
+  <!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc14</artifactId> <version>10.2.0.4.0</version> <type>pom</type>
+   </dependency> -->
+  <!-- Web Service的apache cxf -->
+  <!-- <dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-frontend-jaxws</artifactId> <version>${cxf.version}</version>
+   </dependency> <dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-transports-http</artifactId> <version>${cxf.version}</version>
+   </dependency> -->
+  <!-- Web Service的axis2 -->
+  <dependency>
+   <groupId>org.apache.axis2</groupId>
+   <artifactId>axis2</artifactId>
+   <version>1.6.2</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.axis2</groupId>
+   <artifactId>axis2-transport-http</artifactId>
+   <version>1.6.2</version>
+   <exclusions>
+    <exclusion>
+     <groupId>javax.servlet</groupId>
+     <artifactId>servlet-api</artifactId>
+    </exclusion>
+   </exclusions>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.axis2</groupId>
+   <artifactId>axis2-transport-local</artifactId>
+   <version>1.6.2</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.axis2</groupId>
+   <artifactId>axis2-spring</artifactId>
+   <version>1.6.2</version>
+  </dependency>
+
+  <dependency>
+   <groupId>wsdl4j</groupId>
+   <artifactId>wsdl4j</artifactId>
+   <version>1.6.2</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.ws.commons.schema</groupId>
+   <artifactId>XmlSchema</artifactId>
+   <version>1.4.2</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.ws.commons.axiom</groupId>
+   <artifactId>axiom-api</artifactId>
+   <version>1.2.13</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.ws.commons.axiom</groupId>
+   <artifactId>axiom-impl</artifactId>
+   <version>1.2.13</version>
+  </dependency>
+  <dependency>
+   <groupId>backport-util-concurrent</groupId>
+   <artifactId>backport-util-concurrent</artifactId>
+   <version>3.1</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.neethi</groupId>
+   <artifactId>neethi</artifactId>
+   <version>3.0.2</version>
+  </dependency>
+  <dependency>
+   <groupId>commons-httpclient</groupId>
+   <artifactId>commons-httpclient</artifactId>
+   <version>3.1</version>
+  </dependency>
+
+  <dependency>
+   <groupId>commons-beanutils</groupId>
+   <artifactId>commons-beanutils</artifactId>
+   <version>20030211.134440</version>
+  </dependency>
+
+  <!-- 添加poi的jar包 -->
+  <dependency>
+   <groupId>org.apache.poi</groupId>
+   <artifactId>poi</artifactId>
+   <version>3.10-beta2</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.poi</groupId>
+   <artifactId>poi-ooxml</artifactId>
+   <version>3.10-beta2</version>
+  </dependency>
+  <!-- java 邮箱 -->
+  <dependency>
+   <groupId>javax.mail</groupId>
+   <artifactId>mail</artifactId>
+   <version>1.4</version>
+  </dependency>
+  <!-- axis -->
+  <dependency>
+   <groupId>commons-discovery</groupId>
+   <artifactId>axis</artifactId>
+   <version>1.4</version>
+  </dependency>
+  <dependency>
+   <groupId>javax.xml</groupId>
+   <artifactId>jaxrpc</artifactId>
+   <version>1.1</version>
+  </dependency>
+  <dependency>
+   <groupId>commons-discovery</groupId>
+   <artifactId>commons-discovery</artifactId>
+   <version>0.2</version>
+  </dependency>
+  <!-- json -->
+  <dependency>
+   <groupId>de.odysseus.staxon</groupId>
+   <artifactId>staxon</artifactId>
+   <version>1.2</version>
+  </dependency>
+  <dependency>
+   <groupId>net.sf.json-lib</groupId>
+   <artifactId>json-lib</artifactId>
+   <version>2.4</version>
+   <classifier>jdk15</classifier>
+  </dependency>
+  <dependency>
+   <groupId>com.fasterxml.jackson.dataformat</groupId>
+   <artifactId>jackson-dataformat-xml</artifactId>
+   <version>2.1.3</version>
+  </dependency>
+  <dependency>
+   <groupId>com.fasterxml.jackson.core</groupId>
+   <artifactId>jackson-databind</artifactId>
+   <version>2.1.3</version>
+   <type>java-source</type>
+   <scope>compile</scope>
+  </dependency>
+  <dependency>
+   <groupId>org.codehaus.jackson</groupId>
+   <artifactId>jackson-mapper-asl</artifactId>
+   <version>1.8.5</version>
+  </dependency>
+  <dependency>
+   <!-- jsoup HTML parser library @ http://jsoup.org/ -->
+   <groupId>org.jsoup</groupId>
+   <artifactId>jsoup</artifactId>
+   <version>1.7.3</version>
+  </dependency>
+
+  <dependency>
+   <groupId>net.sourceforge.pinyin4j</groupId>
+   <artifactId>pinyin4j</artifactId>
+   <version>2.5.0</version>
+  </dependency>
+ </dependencies>
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>tomcat-maven-plugin</artifactId>
+    <version>1.0-beta-1</version>
+    <configuration>
+     <url>http://localhost/manager</url>
+    </configuration>
+   </plugin>
+  </plugins>
+  <finalName>testwabapp</finalName>
+  <defaultGoal>compile</defaultGoal>
+ </build>
+</project>

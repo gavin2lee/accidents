@@ -1,0 +1,6 @@
+rootProject.name = 'goodqa'
+
+//include 'happyaq-model'
+//include 'happyaq-data'
+//include 'happyaq-service'
+//include 'happyaq-portal'

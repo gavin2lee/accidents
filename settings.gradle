@@ -1,0 +1,6 @@
+rootProject.name = 'accidents-dc'
+
+include 'road-accidents-common'
+include 'road-accidents--data'
+include 'road-accidents'
+//include 'happyaq-portal'

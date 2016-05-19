@@ -9,10 +9,14 @@
   <version>1.0-SNAPSHOT</version>
   <name>Road Accidents Data Center</name>
 
-  <properties>
-    <spring.version>4.2.6.RELEASE</spring.version>
-    <junit.version>4.12</junit.version>
-  </properties>
+  <parent>
+    <groupId>com.gl.roadaccidents</groupId>
+    <artifactId>accidents-dc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- could ignore this -->
+    <!--relativePath>../pom.xml</relativePath-->
+  </parent>
 
   <dependencies>
     <dependency>

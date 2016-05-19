@@ -9,6 +9,12 @@
     <version>1.0-SNAPSHOT</version>
     <name>Data Module</name>
 
+    <parent>
+      <groupId>com.gl.roadaccidents</groupId>
+      <artifactId>accidents-dc</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <developers>
         <developer>
             <id>gavin2lee</id>
@@ -26,7 +32,7 @@
         <mysql-driver.version>5.1.36</mysql-driver.version>
         <tomcat.jdbc.version>8.5.0</tomcat.jdbc.version>
 
-        <jnuit.version>4.12</jnuit.version>
+        <junit.version>4.12</junit.version>
         <assertj.version>2.2.0</assertj.version>
     </properties>
 
@@ -166,7 +172,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${jnuit.version}</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -208,27 +214,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>maven-central</id>
-            <url>http://repo1.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>jboss</id>
-            <url>http://repository.jboss.com/maven2/</url>
-        </repository>
-        <repository>
-            <id>spring-libs-snapsho</id>
-            <url>https://repo.spring.io/libs-snapshot</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-libs-snapshot</id>
-            <url>https://repo.spring.io/libs-snapshot</url>
-        </pluginRepository>
-    </pluginRepositories>
-
 </project>

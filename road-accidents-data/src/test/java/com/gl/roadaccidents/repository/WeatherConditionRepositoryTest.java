@@ -19,7 +19,7 @@ import java.util.Date;
 @ContextConfiguration(locations = "classpath:config/repository.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Rollback(false)
+@Rollback(true)
 public class WeatherConditionRepositoryTest {
     @Autowired
     WeatherConditionRepository repo;

@@ -37,8 +37,10 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
         <property name="jpaDialect" ref="jpaDialect" />
+        <!--
         <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
         <property name="persistenceUnitName" value="roadAccidents"/>
+        -->
         <property name="packagesToScan" value="com.gl.roadaccidents.model"/>
     </bean>
 

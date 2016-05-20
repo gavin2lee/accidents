@@ -24,7 +24,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 @ContextConfiguration(locations = {"classpath:mybatis/repository-mybatis.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Rollback(false)
+@Rollback(true)
 public class RoadAccidentRepositoryTest {
     @Autowired
     WeatherConditionRepository weatherConditionRepository;

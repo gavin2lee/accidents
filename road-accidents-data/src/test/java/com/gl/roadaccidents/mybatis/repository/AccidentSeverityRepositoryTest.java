@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.greaterThan;
 @ContextConfiguration(locations = {"classpath:mybatis/repository-mybatis.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Rollback(false)
+@Rollback(true)
 public class AccidentSeverityRepositoryTest {
     @Autowired
     AccidentSeverityRepository repo;

@@ -23,7 +23,7 @@ import static org.hamcrest.Matchers.is;
 @ContextConfiguration(classes = {RepositoryConfiguration.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Rollback(false)
+@Rollback(true)
 public class WeatherConditionRepositoryAnnotationTest {
     @Autowired
     WeatherConditionRepository repo;

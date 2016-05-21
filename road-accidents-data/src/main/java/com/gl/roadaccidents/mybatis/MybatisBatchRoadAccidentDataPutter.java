@@ -14,7 +14,13 @@ import java.util.concurrent.ExecutorService;
 public class MybatisBatchRoadAccidentDataPutter extends MybatisRoadAccidentDataPutter{
     private static final Logger log = LoggerFactory.getLogger(MybatisBatchRoadAccidentDataPutter.class);
 
-    public MybatisBatchRoadAccidentDataPutter(BlockingQueue<RoadAccidentVo> toStore, DataLoadService service, ExecutorService pool) {
+    public MybatisBatchRoadAccidentDataPutter
+            (
+            BlockingQueue<RoadAccidentVo> toStore,
+            DataLoadService service,
+            ExecutorService pool
+    )
+    {
         super(toStore, service, pool);
     }
 

@@ -31,7 +31,10 @@ public class MybatisRoadAccidentDataReader implements DataReader, Callable<Long>
 
 
         for (Resource r : resourcesToRead) {
-            amountOfRecords += processOneResource(r);
+            log.info("Start: read '{}' at '{}'", r.getURI().toString(), new Date().toString());
+            long amount = processOneResource(r);
+            amountOfRecords += amount;
+            log.info("End: read {} from '{}' at '{}'", amount,r.getURI().toString(), new Date().toString());
         }
 
 

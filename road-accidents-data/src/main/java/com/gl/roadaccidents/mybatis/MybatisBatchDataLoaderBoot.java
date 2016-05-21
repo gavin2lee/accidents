@@ -21,7 +21,7 @@ public class MybatisBatchDataLoaderBoot {
 
     public static final String DATA_LOADER_BEAN_NAME = "batchDataLoader";
 
-    public static final String SIZE_OF_PUTTER = "12";
+    public static final String SIZE_OF_PUTTER = "8";
 
     public static final String BATCH_SIZE = "300";
 

@@ -4,6 +4,8 @@ import com.gl.roadaccidents.builder.RoadAccidentBuilder;
 import com.gl.roadaccidents.load.DataPutter;
 import com.gl.roadaccidents.model.*;
 import com.gl.roadaccidents.service.DataLoadService;
+import com.gl.roadaccidents.service.StaticDataService;
+import com.gl.roadaccidents.util.RoadAccidentConverter;
 import com.gl.roadaccidents.vo.RoadAccidentVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +33,7 @@ public class MybatisRoadAccidentDataPutter implements DataPutter, Callable<Long>
 
     private BlockingQueue<RoadAccidentVo> toStore;
     private DataLoadService service;
+
 
     private ExecutorService pool;
 
@@ -156,65 +159,9 @@ public class MybatisRoadAccidentDataPutter implements DataPutter, Callable<Long>
     }
 
     private RoadAccident processRoadAccidentVo(RoadAccidentVo vo) {
-        Date occurOn;
-        Date occurAt;
-
-        try {
-            occurOn = new SimpleDateFormat("dd/MM/yyyy").parse(vo.getOccurOn());
-
-        } catch (ParseException e) {
-            log.warn("Malformed occurOn : " + vo.toString());
-            occurOn = null;
-        }
-
-        try {
-            occurAt = new SimpleDateFormat("HH:mm").parse(vo.getOccurAt());
-        } catch (ParseException e) {
-            log.warn("Malformed occurAt: " + vo.toString());
-            occurAt = null;
-        }
-        RoadAccident ra = RoadAccidentBuilder.newBuilder().setAccidentIndex(vo.getAccidentIndex())
-                .setLongitude(Double.valueOf(vo.getLongitude()))
-                .setLatitude(Double.valueOf(vo.getLatitude()))
-                .setDayOfWeek(Integer.valueOf(vo.getDayOfWeek()))
-                .setPoliceForce(findPoliceForce(vo.getPoliceForce()))
-                .setAccidentSeverity(findAccidentSeverity(vo.getAccidentSeverity()))
-                .setNumberOfVehicles(Integer.valueOf(vo.getNumberOfVehicles()))
-                .setNumberOfCasualties(Integer.valueOf(vo.getNumberOfCasualties()))
-                .setOccurOn(occurOn)
-                .setOccurAt(occurAt)
-                .setDistrictAuthority(findDistrictAuthority(vo.getDistrictAuthority()))
-                .setLightCondition(findLightCondition(vo.getLightCondition()))
-                .setWeatherCondition(findWeatherCondition(vo.getWeatherCondition()))
-                .setRoadSurface(findRoadSurface(vo.getRoadSurface()))
-                .build();
-
-        return ra;
+       return new RoadAccidentConverter(
+               new MybatisStaticDataService(getService())
+       )
+               .processRoadAccidentVo(vo);
     }
-
-    private PoliceForce findPoliceForce(String code) {
-        return service.retrievePoliceForceWithCode(Integer.valueOf(code));
-    }
-
-    private AccidentSeverity findAccidentSeverity(String code) {
-        return service.retrieveAccidentSeverityWithCode(Integer.valueOf(code));
-    }
-
-    private DistrictAuthority findDistrictAuthority(String code) {
-        return service.retrieveDistrictAuthorityWithCode(Integer.valueOf(code));
-    }
-
-    private LightCondition findLightCondition(String code) {
-        return service.retrieveLightConditionWithCode(Integer.valueOf(code));
-    }
-
-    private WeatherCondition findWeatherCondition(String code) {
-        return service.retrieveWeatherConditionWithCode(Integer.valueOf(code));
-    }
-
-    private RoadSurface findRoadSurface(String code) {
-        return service.retrieveRoadSurfaceWithCode(Integer.valueOf(code));
-    }
-
-
 }

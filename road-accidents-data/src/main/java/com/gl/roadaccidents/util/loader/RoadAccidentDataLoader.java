@@ -4,6 +4,8 @@ import com.gl.roadaccidents.builder.RoadAccidentBuilder;
 import com.gl.roadaccidents.model.*;
 import com.gl.roadaccidents.service.JpaDataLoadService;
 import com.gl.roadaccidents.service.RoadAccidentDataResourceScanner;
+import com.gl.roadaccidents.service.StaticDataService;
+import com.gl.roadaccidents.util.RoadAccidentConverter;
 import com.gl.roadaccidents.vo.RoadAccidentVo;
 import com.gl.roadaccidents.vo.RoadAccidentVoBuilder;
 import org.apache.commons.csv.CSVFormat;
@@ -433,15 +435,6 @@ public class RoadAccidentDataLoader {
                 }
             }
 
-//            while ((vo = toStore.poll(10L, TimeUnit.SECONDS)) != null) {
-//                count++;
-//                RoadAccident ra = processRoadAccidentVo(vo);
-//                service.addRoadAccident(ra);
-//
-//                if(count % 1000 == 0){
-//                    log.debug(String.format("Have already put %s to %s at %s", ""+count, "road_accident", new Date().toString()));
-//                }
-//            }
 
             System.out.println("*******************  Finished ************************");
 
@@ -449,122 +442,85 @@ public class RoadAccidentDataLoader {
             log.info(">>>>>>>>>>>>>>>>>>>>>>>>>   Putting finished <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             log.info(new Date().toString());
 
-//            Thread.currentThread().sleep(1000);
-
-//            if(pool != null){
-//                pool.shutdown();
-//            }
-
             return count;
         }
 
-        private PoliceForce findPoliceForce(String code) {
-            List<?> entities = staticData.get(PoliceForce.class.getName());
-            for (Object o : entities) {
-                PoliceForce pf = (PoliceForce) o;
-                if (pf.getCode() == Integer.valueOf(code)) {
-                    return pf;
-                }
-            }
-
-            return null;
-        }
-
-        private AccidentSeverity findAccidentSeverity(String code) {
-            List<?> entities = staticData.get(AccidentSeverity.class.getName());
-            for (Object o : entities) {
-                AccidentSeverity e = (AccidentSeverity) o;
-                if (e.getCode() == Integer.valueOf(code)) {
-                    return e;
-                }
-            }
-
-            return null;
-        }
-
-        private DistrictAuthority findDistrictAuthority(String code) {
-            List<?> entities = staticData.get(DistrictAuthority.class.getName());
-            for (Object o : entities) {
-                DistrictAuthority e = (DistrictAuthority) o;
-                if (e.getCode() == Integer.valueOf(code)) {
-                    return e;
-                }
-            }
-
-            return null;
-        }
-
-        private LightCondition findLightCondition(String code) {
-            List<?> entities = staticData.get(LightCondition.class.getName());
-            for (Object o : entities) {
-                LightCondition e = (LightCondition) o;
-                if (e.getCode() == Integer.valueOf(code)) {
-                    return e;
-                }
-            }
-
-            return null;
-        }
-
-        private WeatherCondition findWeatherCondition(String code) {
-            List<?> entities = staticData.get(WeatherCondition.class.getName());
-            for (Object o : entities) {
-                WeatherCondition e = (WeatherCondition) o;
-                if (e.getCode() == Integer.valueOf(code)) {
-                    return e;
-                }
-            }
-
-            return null;
-        }
-
-        private RoadSurface findRoadSurface(String code) {
-            List<?> entities = staticData.get(RoadSurface.class.getName());
-            for (Object o : entities) {
-                RoadSurface e = (RoadSurface) o;
-                if (e.getCode() == Integer.valueOf(code)) {
-                    return e;
-                }
-            }
-
-            return null;
-        }
 
         private RoadAccident processRoadAccidentVo(RoadAccidentVo vo) {
-            Date occurOn;
-            Date occurAt;
+            return new RoadAccidentConverter(new StaticDataService() {
+                public PoliceForce findPoliceForce(String code) {
+                    List<?> entities = staticData.get(PoliceForce.class.getName());
+                    for (Object o : entities) {
+                        PoliceForce pf = (PoliceForce) o;
+                        if (pf.getCode() == Integer.valueOf(code)) {
+                            return pf;
+                        }
+                    }
 
-            try {
-                occurOn = new SimpleDateFormat("dd/MM/yyyy").parse(vo.getOccurOn());
+                    return null;
+                }
 
-            } catch (ParseException e) {
-                log.warn("Malformed date : " + vo.getOccurOn(), e);
-                occurOn = null;
-            }
+                public AccidentSeverity findAccidentSeverity(String code) {
+                    List<?> entities = staticData.get(AccidentSeverity.class.getName());
+                    for (Object o : entities) {
+                        AccidentSeverity e = (AccidentSeverity) o;
+                        if (e.getCode() == Integer.valueOf(code)) {
+                            return e;
+                        }
+                    }
 
-            try {
-                occurAt = new SimpleDateFormat("HH:mm").parse(vo.getOccurAt());
-            } catch (ParseException e) {
-                log.warn("Malformed time: " + vo.getOccurAt(), e);
-                occurAt = null;
-            }
-            RoadAccident ra = RoadAccidentBuilder.newBuilder().setAccidentIndex(vo.getAccidentIndex())
-                    .setLongitude(Double.valueOf(vo.getLongitude()))
-                    .setLatitude(Double.valueOf(vo.getLatitude()))
-                    .setDayOfWeek(Integer.valueOf(vo.getDayOfWeek()))
-                    .setPoliceForce(findPoliceForce(vo.getPoliceForce()))
-                    .setAccidentSeverity(findAccidentSeverity(vo.getAccidentSeverity()))
-                    .setNumberOfVehicles(Integer.valueOf(vo.getNumberOfVehicles()))
-                    .setNumberOfCasualties(Integer.valueOf(vo.getNumberOfCasualties()))
-                    .setOccurOn(occurOn)
-                    .setOccurAt(occurAt)
-                    .setDistrictAuthority(findDistrictAuthority(vo.getDistrictAuthority()))
-                    .setLightCondition(findLightCondition(vo.getLightCondition()))
-                    .setWeatherCondition(findWeatherCondition(vo.getWeatherCondition()))
-                    .setRoadSurface(findRoadSurface(vo.getRoadSurface()))
-                    .build();
+                    return null;
+                }
 
-            return ra;
+                public DistrictAuthority findDistrictAuthority(String code) {
+                    List<?> entities = staticData.get(DistrictAuthority.class.getName());
+                    for (Object o : entities) {
+                        DistrictAuthority e = (DistrictAuthority) o;
+                        if (e.getCode() == Integer.valueOf(code)) {
+                            return e;
+                        }
+                    }
+
+                    return null;
+                }
+
+                public LightCondition findLightCondition(String code) {
+                    List<?> entities = staticData.get(LightCondition.class.getName());
+                    for (Object o : entities) {
+                        LightCondition e = (LightCondition) o;
+                        if (e.getCode() == Integer.valueOf(code)) {
+                            return e;
+                        }
+                    }
+
+                    return null;
+                }
+
+                public WeatherCondition findWeatherCondition(String code) {
+                    List<?> entities = staticData.get(WeatherCondition.class.getName());
+                    for (Object o : entities) {
+                        WeatherCondition e = (WeatherCondition) o;
+                        if (e.getCode() == Integer.valueOf(code)) {
+                            return e;
+                        }
+                    }
+
+                    return null;
+                }
+
+                public RoadSurface findRoadSurface(String code) {
+                    List<?> entities = staticData.get(RoadSurface.class.getName());
+                    for (Object o : entities) {
+                        RoadSurface e = (RoadSurface) o;
+                        if (e.getCode() == Integer.valueOf(code)) {
+                            return e;
+                        }
+                    }
+
+                    return null;
+                }
+            }).processRoadAccidentVo(vo);
+
         }
     }
 }

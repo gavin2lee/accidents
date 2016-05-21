@@ -2,7 +2,9 @@ package com.gl.roadaccidents.builder;
 
 import com.gl.roadaccidents.model.*;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
+
 
 /**
  * Created by gavin on 16-5-13.
@@ -17,7 +19,7 @@ public class RoadAccidentBuilder {
     private Integer numberOfCasualties;
     private Date occurOn;
     private Integer dayOfWeek;
-    private Date occurAt;
+    private Time occurAt;
     private DistrictAuthority districtAuthority;
     private LightCondition lightCondition;
     private WeatherCondition weatherCondition;
@@ -77,7 +79,7 @@ public class RoadAccidentBuilder {
         return this;
     }
 
-    public RoadAccidentBuilder setOccurAt(Date occurAt) {
+    public RoadAccidentBuilder setOccurAt(Time occurAt) {
         this.occurAt = occurAt;
         return this;
     }
@@ -123,7 +125,7 @@ public class RoadAccidentBuilder {
         ra.setOccurOn(occurOn);
         ra.setWeatherCondition(weatherCondition);
 
-        ra.setCreateAt(new Date());
+        ra.setCreateAt(new java.util.Date());
 
         return ra;
     }

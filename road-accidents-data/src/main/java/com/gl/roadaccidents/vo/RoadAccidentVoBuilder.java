@@ -149,4 +149,6 @@ public class RoadAccidentVoBuilder {
     public RoadAccidentVo build(){
         return new RoadAccidentVo(this);
     }
+
+
 }

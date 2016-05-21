@@ -29,14 +29,6 @@ public class DataLoaderBoot {
 
             loader.load();
 
-//            try {
-//                Thread.sleep(1 * 1000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-
-            //ctx.close();
-
         } catch (Throwable e) {
             log.error("ERROR when loading data.", e);
         }

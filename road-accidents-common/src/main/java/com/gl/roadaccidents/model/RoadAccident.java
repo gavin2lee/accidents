@@ -1,7 +1,8 @@
 package com.gl.roadaccidents.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
 /**
  * Created by gavin on 16-5-13.
@@ -31,7 +32,7 @@ public class RoadAccident extends BaseEntity{
     private Integer numberOfCasualties;
     private Date occurOn;
     private Integer dayOfWeek;
-    private Date occurAt;
+    private Time occurAt;
     private DistrictAuthority districtAuthority;
     private LightCondition lightCondition;
     private WeatherCondition weatherCondition;
@@ -83,7 +84,7 @@ public class RoadAccident extends BaseEntity{
     }
 
     @Column(name="occur_at")
-    public Date getOccurAt() {
+    public Time getOccurAt() {
         return occurAt;
     }
 
@@ -147,7 +148,7 @@ public class RoadAccident extends BaseEntity{
         this.dayOfWeek = dayOfWeek;
     }
 
-    public void setOccurAt(Date occurAt) {
+    public void setOccurAt(Time occurAt) {
         this.occurAt = occurAt;
     }
 

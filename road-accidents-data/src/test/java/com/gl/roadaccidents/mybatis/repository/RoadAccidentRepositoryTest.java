@@ -60,7 +60,7 @@ public class RoadAccidentRepositoryTest {
                             .newBuilder()
                             .setAccidentIndex("aaaa")
                     .setWeatherCondition(w)
-                .setOccurOn(new Date())
+                .setOccurOn(new java.sql.Date(new Date().getTime()))
                 .build()
                 ;
 
@@ -117,7 +117,7 @@ public class RoadAccidentRepositoryTest {
                 .setRoadSurface(rs)
                 .setLightCondition(lc)
                 .setPoliceForce(pf)
-                .setOccurOn(new Date())
+                .setOccurOn(new java.sql.Date(new Date().getTime()))
                 .build();
 
         ra.setCreateAt(new Date());
@@ -197,7 +197,7 @@ public class RoadAccidentRepositoryTest {
                 .setRoadSurface(rs)
                 .setLightCondition(lc)
                 .setPoliceForce(pf)
-                .setOccurOn(new Date())
+                .setOccurOn(new java.sql.Date(new Date().getTime()))
                 .build();
 
         ra.setCreateAt(new Date());
@@ -207,7 +207,7 @@ public class RoadAccidentRepositoryTest {
         RoadAccident ra2 = RoadAccidentBuilder
                 .newBuilder()
                 .setAccidentIndex("CCCC")
-                .setOccurOn(new Date())
+                .setOccurOn(new java.sql.Date(new Date().getTime()))
                 .build();
 
         ra2.setCreateAt(new Date());

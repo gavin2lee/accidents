@@ -21,7 +21,8 @@ STORIES:
     ID: Story-02,
     Title: "Restructure the projects",
     CreateOn: 2016-05-19,
-    Status: TBD,
+    Status: DONE,
+    FinishedOn:2016-05-21,
     Description: "Restructure the projects as all the modules could be managed by the parent project."
 },
 

@@ -1,5 +1,4 @@
 truncate table road_accident;
-truncate table road_accident;
 truncate table weather_condition;
 truncate table road_surface;
 truncate table light_condition;

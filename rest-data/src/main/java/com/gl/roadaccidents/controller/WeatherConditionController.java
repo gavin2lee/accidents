@@ -21,12 +21,12 @@ public class WeatherConditionController {
     @Qualifier("restWeatherConditionService")
     private WeatherConditionService weatherConditionService;
 
-    @RequestMapping("/weather-conditions")
+    @RequestMapping("/rest-data/weather-conditions")
     public List<WeatherCondition> getWeatherConditions(){
         return weatherConditionService.getWeatherConditions();
     }
 
-    @RequestMapping("/weather-conditions/{id}")
+    @RequestMapping("/rest-data/weather-conditions/{id}")
     public WeatherCondition getWeatherConditionWithId(@PathVariable("id") long id){
 
 

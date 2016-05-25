@@ -24,14 +24,14 @@ public class RoadAccidentController {
     @Qualifier("restRoadAccidentService")
     private RoadAccidentService roadAccidentService;
 
-    @RequestMapping("/rest-data/road-accidents/{id}")
+    @RequestMapping("/road-accidents/{id}")
     public RoadAccident getRoadAccidentWithId(@PathVariable("id") Long id) {
         log.debug("Id: {}", id);
 
         return roadAccidentService.getRoadAccidentWithObjectId(id);
     }
 
-    @RequestMapping("/rest-data/road-accidents")
+    @RequestMapping("/road-accidents")
     public List<RoadAccident> getRoadAccidentsWithYear(
             @RequestParam(name = "year", defaultValue = "2009") int year,
             @RequestParam(name = "page", defaultValue = "1") int page) {

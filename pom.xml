@@ -41,6 +41,7 @@
         <module>road-accidents-common</module>
         <module>road-accidents-data</module>
         <module>rest-data</module>
+        <module>rest-data-web</module>
         <module>road-accidents</module>
     </modules>
 

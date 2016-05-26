@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 
-    <link th:href="@{/stylesheets/bootstrap/bootstrap.3.3.5.css}" rel="stylesheet"/>
+    <link th:href="@{/stylesheets/bootstrap/bootstrap-3-combined.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/stylesheets/app-main.css}" rel="stylesheet"/>
 
     <script th:src="@{/javascripts/angular/angular.1.5.5.min.js}"></script>
@@ -23,77 +23,7 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="container-fluid">
-                        <a  class="btn btn-navbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <a href="#" class="brand">网站名</a>
-                        <a href="#" class="brand">网站名</a>
-                        <div class="nav-collapse collapse navbar-responsive-collapse">
-                            <ul class="nav">
-                                <li class="active">
-                                    <a href="#">主页</a>
-                                </li>
-                                <li>
-                                    <a href="#">链接</a>
-                                </li>
-                                <li>
-                                    <a href="#">链接</a>
-                                </li>
-                                <li class="dropdown">
-                                    <a  class="dropdown-toggle" href="#">下拉菜单<strong class="caret"></strong></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">下拉导航1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">下拉导航2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">其他</a>
-                                        </li>
-                                        <li class="divider">
-                                        </li>
-                                        <li class="nav-header">
-                                            标签
-                                        </li>
-                                        <li>
-                                            <a href="#">链接1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">链接2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul class="nav pull-right">
-                                <li>
-                                    <a href="#">右边链接</a>
-                                </li>
-                                <li class="divider-vertical">
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" href="#">下拉菜单<strong class="caret"></strong></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">下拉导航1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">下拉导航2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">其他</a>
-                                        </li>
-                                        <li class="divider">
-                                        </li>
-                                        <li>
-                                            <a href="#">链接3</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -109,88 +39,142 @@
                                 <thead>
                                 <tr>
                                     <th>
-                                        编号
+                                        Index
                                     </th>
                                     <th>
-                                        产品
+                                        Date
                                     </th>
                                     <th>
-                                        交付时间
+                                        Time
                                     </th>
                                     <th>
-                                        状态
+                                        District
+                                    </th>
+                                    <th>
+                                        Severity
+                                    </th>
+                                    <th>
+                                        Vehicles
+                                    </th>
+                                    <th>
+                                        Casualties
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>
+                                        200901BS70011
+                                    </td>
+                                    <td>
+                                        01/01/2016
+                                    </td>
+                                    <td>
+                                        10:10:10
+                                    </td>
+                                    <td>
+                                        London Airport (Heathrow)
+                                    </td>
+                                    <td>
+                                        Serious
+                                    </td>
+                                    <td>
                                         1
                                     </td>
                                     <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        01/04/2012
-                                    </td>
-                                    <td>
-                                        Default
+                                        1
                                     </td>
                                 </tr>
-                                <tr class="success">
+                                <tr>
+                                    <td>
+                                        200901BS70011
+                                    </td>
+                                    <td>
+                                        01/01/2016
+                                    </td>
+                                    <td>
+                                        10:10:10
+                                    </td>
+                                    <td>
+                                        London Airport (Heathrow)
+                                    </td>
+                                    <td>
+                                        Serious
+                                    </td>
                                     <td>
                                         1
                                     </td>
                                     <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        01/04/2012
-                                    </td>
-                                    <td>
-                                        Approved
+                                        1
                                     </td>
                                 </tr>
-                                <tr class="error">
+                                <tr>
                                     <td>
-                                        2
+                                        200901BS70011
                                     </td>
                                     <td>
-                                        TB - Monthly
+                                        01/01/2016
                                     </td>
                                     <td>
-                                        02/04/2012
+                                        10:10:10
                                     </td>
                                     <td>
-                                        Declined
-                                    </td>
-                                </tr>
-                                <tr class="warning">
-                                    <td>
-                                        3
+                                        London Airport (Heathrow)
                                     </td>
                                     <td>
-                                        TB - Monthly
+                                        Serious
                                     </td>
                                     <td>
-                                        03/04/2012
+                                        1
                                     </td>
                                     <td>
-                                        Pending
+                                        1
                                     </td>
                                 </tr>
-                                <tr class="info">
+                                <tr>
                                     <td>
-                                        4
+                                        200901BS70011
                                     </td>
                                     <td>
-                                        TB - Monthly
+                                        01/01/2016
                                     </td>
                                     <td>
-                                        04/04/2012
+                                        10:10:10
                                     </td>
                                     <td>
-                                        Call in to confirm
+                                        London Airport (Heathrow)
+                                    </td>
+                                    <td>
+                                        Serious
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        200901BS70011
+                                    </td>
+                                    <td>
+                                        01/01/2016
+                                    </td>
+                                    <td>
+                                        10:10:10
+                                    </td>
+                                    <td>
+                                        London Airport (Heathrow)
+                                    </td>
+                                    <td>
+                                        Serious
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        1
                                     </td>
                                 </tr>
                                 </tbody>
@@ -230,31 +214,34 @@
                 <div class="col-xs-6 span3">
                     <dl>
                         <dt>
-                            Rolex
+                            Index
                         </dt>
                         <dd>
-                            劳力士创始人为汉斯.威尔斯多夫，1908年他在瑞士将劳力士注册为商标。
+                            200901BS70011
                         </dd>
                         <dt>
-                            Vacheron Constantin
+                            Longitude
                         </dt>
                         <dd>
-                            始创于1775年的江诗丹顿已有250年历史，
-                        </dd>
-                        <dd>
-                            是世界上历史最悠久、延续时间最长的名表之一。
+                            -0.201349
                         </dd>
                         <dt>
-                            IWC
+                            Latitude
                         </dt>
                         <dd>
-                            创立于1868年的万国表有“机械表专家”之称。
+                            51.512273
                         </dd>
                         <dt>
-                            Cartier
+                            Light_Conditions
                         </dt>
                         <dd>
-                            卡地亚拥有150多年历史，是法国珠宝金银首饰的制造名家。
+                            Darkness - no lighting
+                        </dd>
+                        <dt>
+                            Weather_Conditions
+                        </dt>
+                        <dd>
+                            Fine no high winds
                         </dd>
                     </dl>
                 </div>

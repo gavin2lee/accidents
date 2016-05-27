@@ -6,10 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,12 +16,14 @@ import java.util.List;
 @RestController
 public class RoadAccidentController {
     private static final Logger log = LoggerFactory.getLogger(RoadAccidentController.class);
+    public static final String CROS = "http://localhost:8091";
 
     @Autowired
     @Qualifier("restRoadAccidentService")
     private RoadAccidentService roadAccidentService;
 
     @RequestMapping("/road-accidents/{id}")
+    @CrossOrigin(origins=CROS)
     public RoadAccident getRoadAccidentWithId(@PathVariable("id") Long id) {
         log.debug("Id: {}", id);
 
@@ -32,6 +31,7 @@ public class RoadAccidentController {
     }
 
     @RequestMapping("/road-accidents")
+    @CrossOrigin(origins=CROS)
     public List<RoadAccident> getRoadAccidentsWithYear(
             @RequestParam(name = "year", defaultValue = "2009") int year,
             @RequestParam(name = "page", defaultValue = "1") int page) {

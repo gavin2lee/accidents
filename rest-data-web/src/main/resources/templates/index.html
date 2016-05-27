@@ -11,13 +11,14 @@
     <link th:href="@{/stylesheets/app-main.css}" rel="stylesheet"/>
 
     <script th:src="@{/javascripts/angular/angular.1.5.5.min.js}"></script>
+    <script th:src="@{/javascripts/angular/angular-resource.1.5.5.js}"></script>
 
     <title>Road Accidents REST Data Web</title>
 </head>
 
 
 <body>
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="RoadAccidentsController">
     <div class="row-fluid">
         <div class="span12">
             <div class="navbar">
@@ -62,121 +63,30 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        200901BS70011
+                                <tr ng-repeat="ra in roadAccidents" ng-mouseover="detail()">
+                                    <td  ng-click="detail()">
+                                        {{ra.accidentIndex}}
                                     </td>
                                     <td>
-                                        01/01/2016
+                                        {{ra.occurOn}}
                                     </td>
                                     <td>
-                                        10:10:10
+                                        {{ra.occurAt}}
                                     </td>
                                     <td>
-                                        London Airport (Heathrow)
+                                        {{ra.districtAuthority.label}}
                                     </td>
                                     <td>
-                                        Serious
+                                        {{ra.accidentSeverity.label}}
                                     </td>
                                     <td>
-                                        1
+                                        {{ra.numberOfVehicles}}
                                     </td>
                                     <td>
-                                        1
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        200901BS70011
-                                    </td>
-                                    <td>
-                                        01/01/2016
-                                    </td>
-                                    <td>
-                                        10:10:10
-                                    </td>
-                                    <td>
-                                        London Airport (Heathrow)
-                                    </td>
-                                    <td>
-                                        Serious
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        1
+                                        {{ra.numberOfCasualties}}
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        200901BS70011
-                                    </td>
-                                    <td>
-                                        01/01/2016
-                                    </td>
-                                    <td>
-                                        10:10:10
-                                    </td>
-                                    <td>
-                                        London Airport (Heathrow)
-                                    </td>
-                                    <td>
-                                        Serious
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        200901BS70011
-                                    </td>
-                                    <td>
-                                        01/01/2016
-                                    </td>
-                                    <td>
-                                        10:10:10
-                                    </td>
-                                    <td>
-                                        London Airport (Heathrow)
-                                    </td>
-                                    <td>
-                                        Serious
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        200901BS70011
-                                    </td>
-                                    <td>
-                                        01/01/2016
-                                    </td>
-                                    <td>
-                                        10:10:10
-                                    </td>
-                                    <td>
-                                        London Airport (Heathrow)
-                                    </td>
-                                    <td>
-                                        Serious
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -255,7 +165,10 @@
     </div>
 </div>
 
+    <script th:src="@{/javascripts/services.js}"></script>
+    <script th:src="@{/javascripts/controllers.js}"></script>
     <script th:src="@{/javascripts/app-main.js}"></script>
+
 </body>
 
 </html>

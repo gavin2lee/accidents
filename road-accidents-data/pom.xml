@@ -40,6 +40,21 @@
 
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+            <!--
+This will ensure that all the transitive dependencies of Spring Security use the Spring 4.2.5.RELEASE modules.
+            -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <dependencies>
 
